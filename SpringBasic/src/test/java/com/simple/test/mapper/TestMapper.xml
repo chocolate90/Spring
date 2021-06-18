@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  <!-- mybatis mapper로 사용한다는 의미 -->
+  
+  <!-- namespace에는 참조할 인터페이스명을 적는다. -->
+  <mapper namespace="com.simple.test.mapper.TestMapper">
+  
+  	<!-- 
+  		id속성에는 인터페이스의 추상메서드 명을 적는다.
+  		resultType에는 반환받을 타입을 적는다. 
+  	-->
+  	<select id="getTest" resultType="String">
+  		select sysdate from dual
+  	</select>
+  
+  </mapper>

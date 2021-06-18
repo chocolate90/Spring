@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+
+	<bean id="customer" class="ex05.Customer">
+		<property name="lists">
+			<list>
+				<value>아이유</value>
+				<value>태연</value>
+				<value>츄</value>
+			</list>
+		</property>
+		
+		
+		<property name="vo">
+			<list>
+				<bean id="vo" class="ex05.MemberVO" >
+					<property name="id" value="iu93" />
+					<property name="name" value="이지은" />
+				</bean>
+			</list>
+		</property>
+		
+		
+		<property name="maps">
+			<map>
+				<entry key="k1" value="아이유" />
+				<entry key="k2">
+					<bean class="ex05.MemberVO">
+						<property name="id" value="chuu" />
+						<property name="name" value="김지우" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+		
+	</bean>
+
+</beans>

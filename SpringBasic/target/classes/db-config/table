@@ -1,0 +1,19 @@
+--계정 생성
+create user spring IDENTIFIED by spring;
+
+--권한 부여
+grant resource, CONNECT to spring;
+
+--테이블 스페이스
+alter user spring DEFAULT TABLESPACE users QUOTA UNLIMITED on users;
+
+
+-- 스코어서비스 테이블 정보
+CREATE TABLE T_SCORE(
+    bno NUMBER(10) PRIMARY KEY,
+    name VARCHAR2(20),
+    kor VARCHAR2(20),
+    math VARCHAR2(20)
+);
+
+CREATE SEQUENCE T_SCORE_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
