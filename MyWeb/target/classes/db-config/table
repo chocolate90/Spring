@@ -17,3 +17,14 @@ CREATE TABLE T_SCORE(
 );
 
 CREATE SEQUENCE T_SCORE_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
+
+create table FREEBOARD (
+    bno number(10) primary key,
+    title varchar2(200) not null,
+    writer varchar2(200) not null,
+    content varchar2(2000) not null,
+    regdate date default sysdate,
+    updatedate date default sysdate
+);
+
+create sequence FREEBOARD_SEQ increment by 1 start with 1 nocache;

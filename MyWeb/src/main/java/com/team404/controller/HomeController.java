@@ -36,4 +36,31 @@ public class HomeController {
 		return "home";
 	}
 	
+	// 타일즈 템플릿 요청
+	@RequestMapping("aaa")
+	public String aaa() {
+		
+		
+		
+		return "test/aaa";
+	}
+	
+	@RequestMapping("bbb")
+	public String bbb() {
+		
+		return "test/bbb";
+	}
+	
+	@RequestMapping("zzz")
+	public String zzz() {
+		return "zzz";
+	}
+
+	@RequestMapping("kkk")
+	public String kkk() {
+		return "kkk";
+	}
+	
+	
+	
 }
