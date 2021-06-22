@@ -1,0 +1,18 @@
+package com.team404.freeboard.service;
+
+import org.springframework.stereotype.Service;
+
+import com.team404.command.FreeBoardVO;
+
+@Service("freeService") // componentscan 확인
+public class FreeBoardServiceImpl implements FreeBoardService {
+
+	@Override
+	public int regist(FreeBoardVO vo) {
+		
+		System.out.println(vo.toString());
+		
+		return 0;
+	}
+
+}

@@ -9,8 +9,7 @@
   
   	<typeAliases>
   	
-  		<typeAlias type="com.simple.command.BoardVO" alias="BoardVO" />
-  		<typeAlias type="com.simple.command.ScoreVO" alias="ScoreVO" />
+  		<typeAlias type="com.team404.command.FreeBoardVO" alias="FreeBoardVO" />
   	
   	</typeAliases>
   

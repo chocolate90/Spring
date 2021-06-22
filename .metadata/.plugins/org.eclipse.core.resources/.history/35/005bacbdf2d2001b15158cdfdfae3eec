@@ -1,0 +1,13 @@
+package com.team404.freeboard.service;
+
+import com.team404.command.FreeBoardVO;
+
+public class FreeBoardServiceImpl implements FreeBoardService {
+
+	@Override
+	public int regist(FreeBoardVO vo) {
+		
+		return 0;
+	}
+
+}
