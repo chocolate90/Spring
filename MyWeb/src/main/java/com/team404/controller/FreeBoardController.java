@@ -13,6 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team404.command.FreeBoardVO;
 import com.team404.freeboard.service.FreeBoardService;
+import com.team404.util.Criteria;
+import com.team404.util.PageVO;
 
 @Controller
 @RequestMapping("/freeBoard")
@@ -24,10 +26,32 @@ public class FreeBoardController {
 	
 	// 목록화면
 	@RequestMapping("/freeList")
-	public String freeList(Model model) {
+	public String freeList(Model model, Criteria cri) {
 		
-		ArrayList<FreeBoardVO> list = freeService.getList();
-		model.addAttribute("list", list);
+//		게시판 기본
+//		ArrayList<FreeBoardVO> list = freeService.getList();
+//		model.addAttribute("list", list);
+		
+		// 페이징
+//		ArrayList<FreeBoardVO> list = freeService.getList(cri);
+//		
+//		int total = freeService.getTotal();
+//		
+//		PageVO pageVO = new PageVO(cri, total); // (기준, 토탈)
+		
+//		model.addAttribute("pageVO", pageVO); // 페이징 전달
+//		model.addAttribute("list", list); // 게시글 전달
+		
+		// 검색 페이징 (검색 키워드에 따라서 게시글 수와 데이터가 변경)
+		ArrayList<FreeBoardVO> list = freeService.getList(cri);
+		int total = freeService.getTotal(cri);
+		
+		PageVO pageVO = new PageVO(cri, total);
+		
+		model.addAttribute("pageVO", pageVO); // 페이징 전달
+		model.addAttribute("list", list); // 게시글 전달
+		
+//		System.out.println(cri.toString());
 		
 		return "freeBoard/freeList";
 	}

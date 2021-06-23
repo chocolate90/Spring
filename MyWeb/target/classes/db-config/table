@@ -28,3 +28,38 @@ create table FREEBOARD (
 );
 
 create sequence FREEBOARD_SEQ increment by 1 start with 1 nocache;
+
+--DECLARE
+--    var1 number := 1;
+--BEGIN
+--    while var1 <= 100
+--    loop
+--    
+--        insert into FREEBOARD(bno, writer, title, content)
+--        VALUES(FREEBOARD_SEQ.nextval, 'test1', 'test1', 'tes1');
+--        
+--        insert into FREEBOARD(bno, writer, title, content)
+--        VALUES(FREEBOARD_SEQ.nextval, 'admin', 'admin', 'admin');
+--        
+--        insert into FREEBOARD(bno, writer, title, content)
+--        VALUES(FREEBOARD_SEQ.nextval, 'dev', 'dev', 'dev');
+--        
+--        var1 := var1 + 1;
+--    
+--    end loop;
+--    
+--    commit;
+--    
+--end;
+
+select *
+from (
+    select rownum rn,
+    a.*
+    from (
+           select * 
+           from FREEBOARD
+           order by bno desc
+    ) a
+)
+where rn > 20 and rn <= 30;

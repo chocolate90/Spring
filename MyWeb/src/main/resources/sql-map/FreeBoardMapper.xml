@@ -12,9 +12,59 @@
   		
   	</insert>
   	
-  	<select id="getList" resultType="FreeBoardVO">
+  	<!-- CDATA는  안에들어가는 SQL문을 순수한 문자열의 형태로 인식되도록 처리한다. -->
   	
-  		select * from FREEBOARD order by bno desc
+  	<!-- if, choose는 jstl과 사용이 동일하고, test구문안에는 vo의 setter값이나 map의 key의 값이 들어갈 수 있다. -->
+  	<select id="getList" resultType="FreeBoardVO">
+
+	<![CDATA[
+
+	select *
+	from (
+		select rownum rn,
+			   a.*
+		from (
+				select *
+				from FREEBOARD
+				where
+	]]>				
+		
+				 
+				<if test="searchType == 'title'">title like '%'||#{searchName}||'%'</if>
+				<if test="searchType == 'writer'">writer like '%'||#{searchName}||'%'</if>
+				<if test="searchType == 'content'">content like '%'||#{searchName}||'%'</if>
+				<if test="searchType == 'titcont'">content like '%'||#{searchName}||'%' or title like '%'||#{searchName}||'%'</if>
+				<if test="searchType == null or searchType == ''">1 = 1</if> 
+				
+				<!-- 
+				<choose>
+					<when test="searchType == 'title'">title like '%'||#{searchName}||'%'</when>
+					<when test="searchType == 'writer'">writer like '%'||#{searchName}||'%'</when>
+					<when test="searchType == 'content'">content like '%'||#{searchName}||'%'</when>
+					<when test="searchType == 'titcont'">content like '%'||#{searchName}||'%' or title like '%'||#{searchName}||'%'</when>
+					<otherwise>1 = 1</otherwise>
+				</choose>
+		 		-->
+		
+	<![CDATA[		
+				order by bno desc
+			 ) a
+	)
+	where rn > (#{pageNum} -1) * #{amount} and rn <= #{pageNum} * #{amount}
+	]]>
+  	
+  	</select>
+  	
+  	<!-- 전체 게시글 수 -->
+  	<select id="getTotal" resultType="int">
+  	
+  		select count(*) as total 
+  		from FREEBOARD
+  		where <if test="searchType == 'title'">title like '%'||#{searchName}||'%'</if>
+			  <if test="searchType == 'writer'">writer like '%'||#{searchName}||'%'</if>
+			  <if test="searchType == 'content'">content like '%'||#{searchName}||'%'</if>
+			  <if test="searchType == 'titcont'">content like '%'||#{searchName}||'%' or title like '%'||#{searchName}||'%'</if>
+			  <if test="searchType == null or searchType == ''">1 = 1</if> 
   	
   	</select>
   	

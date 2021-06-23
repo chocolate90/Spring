@@ -1,8 +1,0 @@
---계정 생성
-create user spring IDENTIFIED by spring;
-
---권한 부여
-grant resource, CONNECT to spring;
-
---테이블 스페이스
-alter user spring DEFAULT TABLESPACE users QUOTA UNLIMITED on users;

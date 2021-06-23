@@ -1,6 +1,0 @@
-package com.simple.mapper;
-
-
-public interface ScoerMapper {
-
-}

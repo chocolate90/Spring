@@ -1,4 +1,0 @@
-#Tomcat publish data
-#Fri Jun 18 15:23:50 KST 2021
-org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\woohyun\\.m2\\repository\\org\\springframework\\spring-web\\5.0.7.RELEASE\\spring-web-5.0.7.RELEASE.jar=C\:\\Users\\woohyun\\Desktop\\Programming\\course\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\SpringBasic\\WEB-INF\\lib\\spring-web-5.0.7.RELEASE.jar
-org.eclipse.jst.jee.server\:SpringBasic=C\:\\Users\\woohyun\\Desktop\\Programming\\course\\sts-bundle\\pivotal-tc-server\\instances\\base-instance\\wtpwebapps\\SpringBasic
