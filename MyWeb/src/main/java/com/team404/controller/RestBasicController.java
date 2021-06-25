@@ -3,6 +3,7 @@ package com.team404.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -91,6 +92,43 @@ public class RestBasicController {
 		list.add(t);
 		
 		return list;
+		
+	}
+
+	@CrossOrigin(origins = "*")
+	// consumes - json으로 보내라
+	// produces - json으로 보낸다
+	@PostMapping(value = "/getAjax", consumes = "application/json", produces = "applicaion/json")
+	public ArrayList<TestVO> getAjax(@RequestBody TestVO vo) {
+		
+		System.out.println(vo.toString());
+		
+		ArrayList<TestVO> list = new ArrayList<>();
+		
+		TestVO t = new TestVO("아이유", "20", "2020", 2000);
+		list.add(t);
+		
+		return list;
+		
+		
+	}
+	
+	// xml 형식으로 반환 (jackson xml라이브러리 필요)
+	@CrossOrigin(origins = "*")
+	// consumes - json으로 보내라
+	// produces - xml로 보낸다
+	@PostMapping(value = "/getXML", consumes = "application/json", produces = "application/xml")
+	public ArrayList<TestVO> getXML(@RequestBody TestVO vo) {
+		
+		System.out.println(vo.toString());
+		
+		ArrayList<TestVO> list = new ArrayList<>();
+		
+		TestVO t = new TestVO("아이유", "20", "2020", 2000);
+		list.add(t);
+		
+		return list;
+		
 		
 	}
 }
