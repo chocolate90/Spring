@@ -18,5 +18,7 @@ public class FreeReplyVO {
 	private String replyPw;
 	private Timestamp replyDate;
 	private Timestamp updateDate;
+	// 시간계산
+	private String timegap;
 	
 }

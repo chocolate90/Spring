@@ -78,3 +78,44 @@ create table FREEREPLY(
 );
 
 create SEQUENCE FREEREPLY_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
+
+-- 댓글 시간 계산
+
+select a.*,
+       case when gap <= 60 then '방금전'
+            when gap <= 60*24 then TRUNC(gap / 60) || '시간전'
+            else to_char(replyDate, 'YYYY-MM-DD')
+       end as timegap
+from (
+
+    select bno, 
+           rno, 
+           reply, 
+           replyId, 
+           replyDate, 
+           updateDate,
+           trunc((sysdate-replyDate)*24*60) as gap -- 분 
+    from FREEREPLY 
+    where bno = 306 order by rno desc
+
+) a;
+
+-- 댓글 100개 반복문
+
+DECLARE
+
+    var1 number := 1;
+
+BEGIN
+
+    while var1 <= 100
+    loop
+    
+        insert into FREEREPLY(bno, rno, reply, replyId, replyPw)
+        VALUES(306, FREEREPLY_SEQ.nextval, '아이유'||var1, 'iu', 'iu');
+    
+        var1 := var1 + 1;
+    end loop;
+    commit;
+
+end;

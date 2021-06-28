@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.team404.command.FreeReplyVO;
 import com.team404.command.TestVO;
 
 @RestController // 비동기 전용 컨트롤러 (requestBody + responseBody)
